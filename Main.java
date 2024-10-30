@@ -10,6 +10,7 @@ public class Main {
        System.out.print("\033[H\033[2J");
        System.out.flush();
    }
+
     @SuppressWarnings("ConvertToTryWithResources")
     public static void main(String[] args) {
         ArrayList<String> filmes = new ArrayList<>();
@@ -58,28 +59,42 @@ public class Main {
             }
 
             if (resp.equals("2")) {
-                System.out.println("Digite o numero da crítica que deseja alterar: ");
-                int pos = myObj2.nextInt();
-                myObj2.nextLine();
-                System.out.println("Digite o novo título do filme: ");
-                titulo = myObj.nextLine();
-                System.out.println("Digite a nova data de lançamento: ");
-                data = myObj.nextLine();
-                System.out.println("Digite o novo nome do diretor: ");
-                diretor = myObj.nextLine();
-                System.out.println("Digite a nova avaliação (0/10): ");
-                avaliacao = myObj.nextLine();
-                System.out.println("Digite uma nova crítica: ");
-                comentario = myObj.nextLine();
+                if(filmes.isEmpty()){
+                    System.out.println("Não tem nada aqui");
+                    System.out.println("............................... ");
+                    System.out.println("Pressione ENTER para continuar");
+                    myObj.nextLine();
+                } else {
+                    System.out.println("Digite o numero da crítica que deseja alterar: ");
+                    int pos = myObj2.nextInt();
+                    myObj2.nextLine();
+                    System.out.println("Digite o novo título do filme: ");
+                    titulo = myObj.nextLine();
+                    System.out.println("Digite a nova data de lançamento: ");
+                    data = myObj.nextLine();
+                    System.out.println("Digite o novo nome do diretor: ");
+                    diretor = myObj.nextLine();
+                    System.out.println("Digite a nova avaliação (0/10): ");
+                    avaliacao = myObj.nextLine();
+                    System.out.println("Digite uma nova crítica: ");
+                    comentario = myObj.nextLine();
 
-                filmes.set(pos - 1, "Título: " + titulo + "; Data: " + data + "; Diretor: " + diretor + "; Avaliação: " + avaliacao + "/10; Comentário: " + comentario);
-                Collections.sort(filmes);
+                    filmes.set(pos - 1, "Título: " + titulo + "; Data: " + data + "; Diretor: " + diretor + "; Avaliação: " + avaliacao + "/10; Comentário: " + comentario);
+                    Collections.sort(filmes);
+                }
             }
 
             if (resp.equals("3")) {
-                System.out.println("Diga o número da crítica para remover ");
-                int pos = myObj2.nextInt();
-                filmes.remove(pos - 1);
+                if (filmes.isEmpty()) {
+                    System.out.println("Não tem nada aqui");
+                    System.out.println("............................... ");
+                    System.out.println("Pressione ENTER para continuar");
+                    myObj.nextLine();
+                } else {
+                    System.out.println("Diga o número da crítica para remover ");
+                    int pos = myObj2.nextInt();
+                    filmes.remove(pos - 1);
+                }
             }
 
             if (resp.equals("4")) {
@@ -94,7 +109,7 @@ public class Main {
                 }
                 System.out.println("............................... ");
                 System.out.println("Pressione ENTER para continuar ");
-                titulo = myObj.nextLine();
+                myObj.nextLine();
             }
 
             if (resp.equals("5")) {
